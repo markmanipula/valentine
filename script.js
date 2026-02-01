@@ -17,14 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
         bgMusic.play().catch(e => console.log('Audio autoplay blocked'));
     });
 
-    // Handle all next buttons
+    // Handle all next buttons (page navigation)
     document.querySelectorAll('.next-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             const nextPageId = btn.getAttribute('data-next');
             const currentPage = btn.closest('.page');
 
-            currentPage.classList.add('hidden');
-            document.getElementById(nextPageId).classList.remove('hidden');
+            if (nextPageId && currentPage) {
+                currentPage.classList.add('hidden');
+                document.getElementById(nextPageId).classList.remove('hidden');
+            }
         });
     });
 
@@ -98,8 +102,14 @@ function initSlideshows() {
             goToSlide(currentSlide - 1);
         }
 
-        prevBtn.addEventListener('click', prevSlide);
-        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            prevSlide();
+        });
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextSlide();
+        });
 
         // Touch/swipe support
         let touchStartX = 0;

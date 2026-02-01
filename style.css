@@ -27,6 +27,12 @@ body {
     padding: 20px 0;
 }
 
+.story-page {
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
 .hidden {
     display: none !important;
 }
