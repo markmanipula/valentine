@@ -3,11 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Question For You</title>
+    <title>Our Story</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="question-page" class="page">
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="music/blue.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Start Page -->
+    <div id="start-page" class="page">
+        <div class="container">
+            <div class="heart-decoration">💕</div>
+            <h1>Our Story</h1>
+            <p class="subtitle">A journey through the years...</p>
+            <button id="start-btn" class="btn start-btn">Begin</button>
+        </div>
+    </div>
+
+    <!-- Story Pages -->
+    <div id="story-2020" class="page story-page hidden">
+        <div class="story-container">
+            <div class="year-label">2020</div>
+            <div class="photo-frame">
+                <img src="images/2020.jpg" alt="2020" class="story-photo">
+            </div>
+            <p class="story-caption">Where it all began...</p>
+            <button class="btn next-btn" data-next="story-2021">Next</button>
+        </div>
+    </div>
+
+    <div id="story-2021" class="page story-page hidden">
+        <div class="story-container">
+            <div class="year-label">2021</div>
+            <div class="photo-frame">
+                <img src="images/2021.jpg" alt="2021" class="story-photo">
+            </div>
+            <p class="story-caption">Growing together...</p>
+            <button class="btn next-btn" data-next="story-2022">Next</button>
+        </div>
+    </div>
+
+    <div id="story-2022" class="page story-page hidden">
+        <div class="story-container">
+            <div class="year-label">2022</div>
+            <div class="photo-frame">
+                <img src="images/2022.jpg" alt="2022" class="story-photo">
+            </div>
+            <p class="story-caption">Making memories...</p>
+            <button class="btn next-btn" data-next="story-2023">Next</button>
+        </div>
+    </div>
+
+    <div id="story-2023" class="page story-page hidden">
+        <div class="story-container">
+            <div class="year-label">2023</div>
+            <div class="photo-frame">
+                <img src="images/2023.jpg" alt="2023" class="story-photo">
+            </div>
+            <p class="story-caption">Adventures continue...</p>
+            <button class="btn next-btn" data-next="story-2024">Next</button>
+        </div>
+    </div>
+
+    <div id="story-2024" class="page story-page hidden">
+        <div class="story-container">
+            <div class="year-label">2024</div>
+            <div class="photo-frame">
+                <img src="images/2024.jpg" alt="2024" class="story-photo">
+            </div>
+            <p class="story-caption">Still falling for you...</p>
+            <button class="btn next-btn" data-next="story-2025">Next</button>
+        </div>
+    </div>
+
+    <div id="story-2025" class="page story-page hidden">
+        <div class="story-container">
+            <div class="year-label">2025</div>
+            <div class="photo-frame">
+                <img src="images/2025.jpg" alt="2025" class="story-photo">
+            </div>
+            <p class="story-caption">And now...</p>
+            <button class="btn next-btn" data-next="question-page">Continue</button>
+        </div>
+    </div>
+
+    <!-- Question Page -->
+    <div id="question-page" class="page hidden">
         <div class="container">
             <div class="heart-decoration">💕</div>
             <h1>Will you be my Valentine?</h1>
@@ -21,8 +104,9 @@
         </div>
     </div>
 
+    <!-- Success Page -->
     <div id="success-page" class="page hidden">
-        <div class="container">
+        <div class="container success-container">
             <h1 class="success-title">Yay! I knew you'd say yes!</h1>
             <div class="hearts-animation">
                 <span class="floating-heart">💖</span>
