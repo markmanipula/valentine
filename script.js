@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const noBtn = document.getElementById('no-btn');
     const bgMusic = document.getElementById('bg-music');
 
+    // Initialize all slideshows
+    initSlideshows();
+
     // Start button - begin the journey
     startBtn.addEventListener('click', () => {
         document.getElementById('start-page').classList.add('hidden');
@@ -59,3 +62,65 @@ document.addEventListener('DOMContentLoaded', () => {
         moveNoButton();
     });
 });
+
+function initSlideshows() {
+    document.querySelectorAll('.slideshow').forEach(slideshow => {
+        const slides = slideshow.querySelectorAll('.slide');
+        const dotsContainer = slideshow.querySelector('.slide-dots');
+        const prevBtn = slideshow.querySelector('.prev-slide');
+        const nextBtn = slideshow.querySelector('.next-slide');
+        let currentSlide = 0;
+
+        // Create dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = dotsContainer.querySelectorAll('.dot');
+
+        function goToSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slideshow.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        slideshow.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                nextSlide();
+            } else if (touchEndX > touchStartX + swipeThreshold) {
+                prevSlide();
+            }
+        }
+    });
+}
