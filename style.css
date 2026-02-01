@@ -86,12 +86,25 @@ body {
     }
 }
 
+.year-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
 .year-label {
     font-size: 3.5rem;
     font-weight: bold;
     color: #e74c3c;
-    margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.frog-gif {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
 }
 
 /* Slideshow */
