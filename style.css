@@ -222,8 +222,17 @@ body {
 .next-btn {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
-    padding: 12px 50px;
+    padding: 12px 30px;
     font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-frog {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
 }
 
 .next-btn:hover {
