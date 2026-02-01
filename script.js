@@ -41,34 +41,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Make the No button run away
     let noMoveCount = 0;
     let isOnLeft = false;
+    const buttonsContainer = document.querySelector('.buttons');
 
     const moveNoButton = () => {
         noMoveCount++;
 
-        // After 5 attempts, hide No button and make Yes button bigger
+        // After 5 attempts, hide No button and show Yes button
         if (noMoveCount >= 5) {
             noBtn.style.display = 'none';
-            yesBtn.style.transform = 'scale(1.3)';
-            yesBtn.textContent = 'Yes! 💕';
+            yesBtn.classList.remove('hidden');
+            yesBtn.style.animation = 'bounceIn 0.5s ease-out';
             return;
         }
 
-        // Move to the other side
-        const buttonRect = noBtn.getBoundingClientRect();
-        const yesRect = yesBtn.getBoundingClientRect();
+        // Set up absolute positioning on first move
+        noBtn.style.position = 'absolute';
 
+        // Move to the other side
         if (isOnLeft) {
-            // Move to right side of Yes button
-            noBtn.style.position = 'absolute';
             noBtn.style.left = 'auto';
-            noBtn.style.right = '0';
-            noBtn.style.top = '0';
+            noBtn.style.right = '20px';
         } else {
-            // Move to left side of Yes button
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = '0';
+            noBtn.style.left = '20px';
             noBtn.style.right = 'auto';
-            noBtn.style.top = '0';
         }
 
         isOnLeft = !isOnLeft;
